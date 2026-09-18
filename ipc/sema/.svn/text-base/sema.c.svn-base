@@ -1,0 +1,38 @@
+/*
+ * Semaphores
+ * Name : sema.c
+ * Date : 1998.01.16
+ * By   : PentaSoft Co.,Ltd. (Sagittarius)
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/sem.h>
+#include <errno.h>
+
+int lInitSemaphore(key)
+key_t key;
+{
+int id, rtn =1;
+	id = semget(key, 1, 0666 | IPC_CREAT|IPC_EXCL);
+	if(id < 0){
+		if(errno == EEXIST) id = semget(key, 1, 0);
+		else return (errno * -1);
+	}
+	rtn = semctl(id, 0, SETVAL, &rtn);
+	if(rtn < 0) return (errno * -1);
+	return id;
+}
+int lSemaphoreOperation(id, op)
+int id, op;
+{
+struct sembuf pv;
+	pv.sem_num = 0;
+	if(op == 1) pv.sem_op  = -1; /* semaphore on  */
+	else pv.sem_op  = 1;         /* semaphore off */
+	pv.sem_flg = SEM_UNDO;
+
+	if(semop(id, &pv, 1) == -1)return (errno * -1);
+	else return 1;
+}

@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+sema()
+{
+int sid, pid, i, rtn;
+	sid = lInitSemaphore(FAST_SEMA_KEY);
+	if(sid < 0) exit(0);
+	pid = getpid();
+	printf("\n\nI am %d! semaid[%d]\n", pid, sid);
+	rtn = lSemaphoreOperation(sid, ON);
+	printf("[%6d]--------- Into critcal section! index[%d] rtn[%d]\n", 
+		pid, i, rtn);
+	sleep(3);
+	printf("[%6d] Out  critcal section!--------- index[%d] rtn [%d]\n", 
+		pid, i, rtn);
+	rtn = lSemaphoreOperation(sid, OFF);
+	exit(0);
+}
+main()
+{
+	if(fork() == 0) sema();
+	if(fork() == 0) sema();
+	if(fork() == 0) sema();
+	exit(0);
+}

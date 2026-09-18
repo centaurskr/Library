@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/kbseclib/!svn/ver/13/ipc/queue/sample
+END
+msgqcli.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/kbseclib/!svn/ver/13/ipc/queue/sample/msgqcli.c
+END
+msgqsvr.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/kbseclib/!svn/ver/13/ipc/queue/sample/msgqsvr.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/kbseclib/!svn/ver/13/ipc/queue/sample/Makefile
+END

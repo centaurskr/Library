@@ -1,0 +1,36 @@
+/****************************************************/
+/*                                                  */
+/*Copyright (c) 1995 Daewon System Co,.Ltd          */
+/*All Right Reserved                                */
+/*Get Shared memory ID Interface Libary             */
+/*                                                  */
+/****************************************************/
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+
+/*#@
+**	Function 	: Get shmid 
+**	Syntax   	: int lGetshmid(key_t shmkey);
+**  Prototype in: 
+**  Libary    in:
+**	Remark		:  
+**				  if not shmkey exist error 
+**	Return Value: On success , positive value int type shmid 
+**				  Otherwise,   error -1
+**  See also 	: lGetshmid lOpenshm lMakeshm lAttachshm lDetachshm lRemoveshm 
+**			      		
+**#$ 
+*/
+
+int lGetshmid(key_t shmkey)
+{
+	int shmid;
+	shmid = shmget(shmkey,0,0666|IPC_EXCL);
+	if(shmid==-1) return(-1);
+	return shmid; 
+}
+

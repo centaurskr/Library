@@ -1,0 +1,55 @@
+/*
+ * Create Message-Queue
+ * NAME    : makemsgq.c
+ * DATE    : 1996/03/20-14:38:49
+ * BY      : Sagittarius(Young_Jin Yoon).
+ * REMARKS :
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+
+#define PERMS 0666    /* -wr-wr-wr- */
+/******************************************************************************/
+/* Change Max bytes of Message Queue                                          */
+/* Library in   : libsaipc.a                                                  */
+/* Prototype    : int ChangeQueueSize(id, size)                               */
+/* Arguments    : unsigned short size;  Queue size                            */
+/*                int              id;  Queue ID                              */
+/* Return value : void                                                        */
+/******************************************************************************/
+int lChangeQueueSize(int id, unsigned short size)
+{
+struct msqid_ds st;
+	if(msgctl(id, IPC_STAT, &st) < 0)return 0;
+	if(st.msg_qbytes < size){
+		st.msg_qbytes = size;
+		msgctl(id, IPC_SET, &st);
+	}
+	return 1;
+}
+
+/******************************************************************************/
+/* Make message queue                                                         */
+/* Library in   : libsaipc.a                                                  */
+/* Prototype    : int MakeMsgqueue(key)                                       */
+/* Arguments    : key_t key;            IPC key (int)                         */
+/*                unsigned short size;  Queue size                            */
+/* Return value : int                   Queue ID                              */
+/******************************************************************************/
+int lMakeMsgqueue(key_t key, unsigned short size)
+{
+int id;
+	id = msgget(key, 0);
+	if(id > 0) msgctl(id, IPC_RMID, (struct msqid_ds *)0);
+	id = msgget(key, PERMS | IPC_CREAT);
+	if(!id){
+		msgctl(id, IPC_RMID, (struct msqid_ds *)0);
+		id = msgget(key, PERMS | IPC_CREAT);
+	}
+	if(id < 0) return -1;
+	ChangeQueueSize(id, size);
+	return id;
+}

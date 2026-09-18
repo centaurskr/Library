@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/kbseclib/!svn/ver/13/ipc/queue
+END
+Makefile.org
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/kbseclib/!svn/ver/13/ipc/queue/Makefile.org
+END
+writemsgq.c
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/kbseclib/!svn/ver/13/ipc/queue/writemsgq.c
+END
+readmsgq.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/kbseclib/!svn/ver/13/ipc/queue/readmsgq.c
+END
+makemsgq.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/kbseclib/!svn/ver/13/ipc/queue/makemsgq.c
+END
+openmsgq.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/kbseclib/!svn/ver/13/ipc/queue/openmsgq.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/kbseclib/!svn/ver/13/ipc/queue/Makefile
+END
+closemsgq.c
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/kbseclib/!svn/ver/13/ipc/queue/closemsgq.c
+END

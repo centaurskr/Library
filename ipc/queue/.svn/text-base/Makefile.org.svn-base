@@ -1,0 +1,48 @@
+#
+# Makefile for message queue
+# All right reserved by Sagittarius(Young_Jin Yoon).
+# 1996/03/19-14:23:06
+#
+
+LD_HOME    = $(SRC_HOME)
+AR         = ar
+PROC       =
+SUBDIRS    = sample
+LIBPATH    = $(LD_HOME)/lib
+INCLUDE    = $(LD_HOME)/include
+CFLAGS     = -g -c -D_REENTRANT -I$(INCLUDE) -D_$(HWPLATFORM)_
+ARFLAGS    = ruv
+PROCFLAGS  =
+
+.SUFFIXES:.c .o .pc
+.c.o:
+	$(CC) $(CFLAGS) $*.c
+.c.pc:
+	$(PROC) $(PROCFLAGS) iname=$*.pc include=$(INCLUDE)
+
+LIBOBJS    = makemsgq.o closemsgq.o readmsgq.o writemsgq.o openmsgq.o
+LIBNAME    = libnhcommon.a
+
+MOTIFLIBS  = -lXm -lXt -lX11
+LD_LIBS    = -L$(LIBPATH)
+
+EXECS      =
+
+all:: lib
+# User define
+#
+# sample : sample.o
+# 	$(CC) -o $@ $@.o  $(LD_LIBS)
+#
+
+clean :
+	rm -f *.o core a.out Makefile.old
+	@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE) $@) || exit 1; done
+
+lib : $(LIBOBJS)
+	$(AR) $(ARFLAGS) $(LIBPATH)/$(LIBNAME) $(LIBOBJS)
+
+compress :
+	rm -f  *.o core Makefile.old $(EXECS)
+	@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE) $@) || exit 1; done
+# Pro-C dependency

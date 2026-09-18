@@ -1,0 +1,32 @@
+/****************************************************/
+/*                                                  */
+/*Copyright (c) 1995 Daewon System Co,.Ltd          */
+/*All Right Reserved                                */
+/*Attach access point into Shared memory            */
+/*Interface Libary.                                 */
+/*                                                  */
+/****************************************************/
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+/*#@
+**	Function 	: Attach region area to processor region 
+**	Syntax   	: int lAttachshm(int shmid,char *vaddr,int flag)
+**  Prototype in: 
+**  Libary    in:
+**	Remark		:  
+**				  System Call shmat
+**	Return Value: On success , reginon aread vertural address 
+**				  Otherwise,   error NULL
+**  See also 	: lGetshmid lOpenshm lMakeshm lAttachshm lDetachshm lRemoveshm 
+**			      		
+**#$ 
+*/
+
+char *lAttachshm(int shmid,char *shmaddr,int flag)
+{
+	return shmat(shmid,shmaddr,flag);
+}

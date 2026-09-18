@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+# Desc     : Library Makefile
+# Revisions: Created by ITCastle .Co
+#------------------------------------------------------------------------------
+
+LD_HOME   = $(RUN_HOME)
+
+INCLUDE   = -I$(LD_HOME)/include
+LIBPATH   = $(LD_HOME)/lib
+LIBNAME   = $(LIBPATH)/libnhcommon.a
+
+LIBOBJS   = makeshm.o atchshm.o dtchshm.o rmshm.o getshmid.o 
+
+CFLAGS    = $(CFLAG) -D_REENTRANT -D$(_OSTYPE_) $(INCLUDE)
+ARFLAGS   = $(ARFLAG)
+
+COMPILE.c = $(CC) -c
+
+.SUFFIXES : .c .o
+.c.o   :
+	$(COMPILE.c) $< $(CFLAGS)
+
+all : lib
+
+lib :  $(LIBOBJS)
+	$(AR) $(ARFLAGS) $(LIBNAME) $(LIBOBJS)
+
+clean :
+	rm  -f  $(LIBOBJS) *.o core

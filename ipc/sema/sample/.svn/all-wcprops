@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/kbseclib/!svn/ver/13/ipc/sema/sample
+END
+semtest
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/kbseclib/!svn/ver/13/ipc/sema/sample/semtest
+END
+semtest.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/kbseclib/!svn/ver/13/ipc/sema/sample/semtest.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/kbseclib/!svn/ver/13/ipc/sema/sample/Makefile
+END

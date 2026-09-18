@@ -1,0 +1,33 @@
+#------------------------------------------------------------------------------
+# Desc     : Library Makefile
+# Revisions: Created by ITCastle .Co
+#------------------------------------------------------------------------------
+
+LD_HOME   = $(RUN_HOME)
+
+SUBDIRS   = sample
+
+INCLUDE   = -I$(LD_HOME)/include
+LIBPATH   = $(LD_HOME)/lib
+LIBNAME   = $(LIBPATH)/libnhcommon.a
+
+LIBOBJS   = closemsgq.o readmsgq.o writemsgq.o openmsgq.o
+
+CFLAGS    = $(CFLAG) -D_REENTRANT -D$(_OSTYPE_) $(INCLUDE)
+ARFLAGS   = $(ARFLAG)
+
+COMPILE.c = $(CC) -c
+
+.SUFFIXES : .c .o
+.c.o   :
+	$(COMPILE.c) $< $(CFLAGS)
+
+all : lib
+	@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE) $@) || exit 1; done
+
+lib :  $(LIBOBJS)
+	$(AR) $(ARFLAGS) $(LIBNAME) $(LIBOBJS)
+
+clean :
+	rm  -f  $(LIBOBJS) *.o core
+	@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE) $@) || exit 1; done

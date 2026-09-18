@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/kbseclib/!svn/ver/13/ipc/shm
+END
+Makefile.org
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/kbseclib/!svn/ver/13/ipc/shm/Makefile.org
+END
+getshmid.c
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/kbseclib/!svn/ver/13/ipc/shm/getshmid.c
+END
+makeshm.c
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/kbseclib/!svn/ver/13/ipc/shm/makeshm.c
+END
+rmshm.c
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/kbseclib/!svn/ver/13/ipc/shm/rmshm.c
+END
+atchshm.c
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/kbseclib/!svn/ver/13/ipc/shm/atchshm.c
+END
+dtchshm.c
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/kbseclib/!svn/ver/13/ipc/shm/dtchshm.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/kbseclib/!svn/ver/13/ipc/shm/Makefile
+END

@@ -1,0 +1,25 @@
+/*
+ * Destroy Message Queue.
+ * NAME    : closemsgq.c
+ * DATE    : 1996/03/20-15:01:23
+ * BY      : Sagittarius(Young_Jin Yoon).
+ * REMARKS :
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+
+/******************************************************************************/
+/* Destroy message queue                                                      */
+/* Library in   : libsaipc.a                                                  */
+/* Prototype    : void CloseMsgqueue(id)                                      */
+/* Arguments    : int              id;  Queue ID                              */
+/* Return value : int                                                         */
+/******************************************************************************/
+int lCloseMsgqueue(int id)
+{
+	return msgctl(id, IPC_RMID, (struct msqid_ds *)0);
+}
+

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/kbseclib/!svn/ver/13/ipc/sema
+END
+sample.c
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/kbseclib/!svn/ver/13/ipc/sema/sample.c
+END
+Makefile.org
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/kbseclib/!svn/ver/13/ipc/sema/Makefile.org
+END
+sema.c
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/kbseclib/!svn/ver/13/ipc/sema/sema.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/kbseclib/!svn/ver/13/ipc/sema/Makefile
+END

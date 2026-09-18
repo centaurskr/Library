@@ -1,0 +1,31 @@
+#
+# Makefile for named pipe(server or client)
+# All right reserved by Daewon System Co., Ltd (Sagittarius)
+#
+LD_HOME    = $(SRC_HOME)
+MAKE       = make
+AR         = ar
+
+SUBDIRS    = sample
+LIBPATH    = $(LD_HOME)/lib
+LIBNAME    = $(LIBPATH)/libnhcommon.a
+INCLUDE    = $(LD_HOME)/include
+LIBOBJS    = opennpipe.o makenpipe.o delnpipe.o svrnpipe.o cilnpipe.o closenpipe.o sendnpipe.o readnpipe.o
+
+.SUFFIXES:.c .o
+
+.c.o:
+	$(CC) -g -c -D_REENTRANT -I$(INCLUDE) -D_$(HWPLATFORM)_ $*.c
+
+all : npipe
+
+npipe :  $(LIBOBJS)
+	$(AR) -ruv $(LIBNAME) $(LIBOBJS)
+
+clean :
+	rm  -f  $(LIBOBJS) *.o
+	@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE) $@) || exit 1; done
+
+compress :
+	rm  -f  $(LIBOBJS) *.o core
+	@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE) $@) || exit 1; done

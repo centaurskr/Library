@@ -1,0 +1,25 @@
+#
+# Makefile for  Shared memory
+# All right reserved by Daewon System Co., Ltd (Sagittarius)
+#
+LD_HOME    = $(SRC_HOME)
+SUBDIRS = sample
+LIBPATH = $(LD_HOME)/lib
+LIBNAME = $(LIBPATH)/libnhcommon.a
+INCLUDE = $(LD_HOME)/include
+
+.SUFFIXES:.c .o
+
+.c.o:
+	$(CC) -g -c -D_REENTRANT -I$(INCLUDE) -D_$(HWPLATFORM)_ $*.c
+
+OBJS    = makeshm.o atchshm.o dtchshm.o rmshm.o getshmid.o
+
+all:lib
+
+lib :  $(OBJS)
+	ar ruv $(LIBNAME) $(OBJS)
+#@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE)) || exit 1; done
+clean :
+	rm -f  $(OBJS) core
+#@for i in $(SUBDIRS); do (cd ./$$i && echo $$i: && $(MAKE) $@) || exit 1; done
