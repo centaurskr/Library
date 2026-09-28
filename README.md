@@ -2,7 +2,7 @@
 
 Linux 시스템 프로그래밍용 C(및 일부 C++) 유틸리티 라이브러리 모음이다. 함수 1개당 파일 1개인 구성으로, 문자열/날짜 처리, 소켓, IPC(파이프/메시지큐/세마포어/공유메모리), 이벤트 루프, 로깅, ZeroMQ 래퍼, 경량 JSON 파서/빌더 등을 제공한다.
 
-빌드 방법과 저장소 구조/컨벤션은 [CLAUDE.md](./CLAUDE.md)를 참고한다. 함수 프로토타입은 이 저장소가 아니라 `~/Project/include/{TbCapi.h,Tbzmqapi.h,old/tblibC.h}`에 선언되어 있다.
+함수 프로토타입은 이 저장소가 아니라 `~/Project/include/{TbCapi.h,Tbzmqapi.h,old/tblibC.h}`에 선언되어 있다.
 
 ## 목차
 
